@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d56a2893-b2ea-4d01-8a7e-a126217f1e03" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:23258/IncrementService.xamlx" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="IncrementService.xsd" MetadataType="Schema" ID="a12564e3-c4e2-43a6-9b57-42ccd9972f10" SourceId="1" SourceUrl="http://localhost:23258/IncrementService.xamlx?xsd=xsd0" />
+    <MetadataFile FileName="IncrementService.wsdl" MetadataType="Wsdl" ID="1e6dbda7-8873-4eb4-baf4-c4cf02914dfe" SourceId="1" SourceUrl="http://localhost:23258/IncrementService.xamlx?wsdl" />
+    <MetadataFile FileName="IncrementService.disco" MetadataType="Disco" ID="ffadd3b6-bc2d-45aa-a96b-75d948ddb63b" SourceId="1" SourceUrl="http://localhost:23258/IncrementService.xamlx?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

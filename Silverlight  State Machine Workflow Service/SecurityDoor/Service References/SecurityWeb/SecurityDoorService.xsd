@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://microsoft.com/samples/wf4/" elementFormDefault="qualified" targetNamespace="http://microsoft.com/samples/wf4/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:49238/SecurityDoorService.xamlx?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost:49238/SecurityDoorService.xamlx?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SecurityDoor.Contracts" />
+  <xs:element name="NotifyDoorStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RoomNumber" type="xs:int" />
+        <xs:element minOccurs="0" name="IsOpen" type="xs:boolean" />
+        <xs:element minOccurs="0" name="IsLocked" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AuthorizeKey">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RoomNumber" type="xs:int" />
+        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="CardKey" type="q1:guid" />
+        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="Timeout" type="q2:duration" />
+        <xs:element minOccurs="0" name="IntrusionThreshold" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AuthorizeKeyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SecurityDoor.Contracts" minOccurs="0" name="Authorized" nillable="true" type="q3:AuthorizeResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DoorReset">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RoomNumber" type="xs:int" />
+        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="CardKey" type="q4:guid" />
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="Timeout" type="q5:duration" />
+        <xs:element minOccurs="0" name="IntrusionThreshold" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DoorResetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SecurityDoor.Contracts" minOccurs="0" name="Authorized" nillable="true" type="q6:AuthorizeResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

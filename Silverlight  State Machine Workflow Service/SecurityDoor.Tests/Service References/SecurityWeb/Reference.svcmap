@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4d3975a0-fd7d-47f4-a48c-26e6ec945a38" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:49238/SecurityDoorService.xamlx" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SecurityDoorService.wsdl" MetadataType="Wsdl" ID="f4c28d9c-ce78-433c-8bcd-d49c1e28929b" SourceId="1" SourceUrl="http://localhost:49238/SecurityDoorService.xamlx?wsdl" />
+    <MetadataFile FileName="SecurityDoorService1.wsdl" MetadataType="Wsdl" ID="9a59de04-504c-41c1-8066-e74d8070717b" SourceId="1" SourceUrl="http://localhost:49238/SecurityDoorService.xamlx?wsdl=wsdl1" />
+    <MetadataFile FileName="SecurityDoorService.xsd" MetadataType="Schema" ID="970f9128-abcb-4b8f-8a5d-52b94f171e07" SourceId="1" SourceUrl="http://localhost:49238/SecurityDoorService.xamlx?xsd=xsd0" />
+    <MetadataFile FileName="SecurityDoorService1.xsd" MetadataType="Schema" ID="d8be6d5a-9e49-4d45-94d0-0419b37ed64f" SourceId="1" SourceUrl="http://localhost:49238/SecurityDoorService.xamlx?xsd=xsd1" />
+    <MetadataFile FileName="SecurityDoorService2.xsd" MetadataType="Schema" ID="ae7c6656-c917-4d64-8877-a4f155f60d24" SourceId="1" SourceUrl="http://localhost:49238/SecurityDoorService.xamlx?xsd=xsd2" />
+    <MetadataFile FileName="SecurityDoorService2.wsdl" MetadataType="Wsdl" ID="d51267cc-4a56-454b-a0fc-44de3be86c34" SourceId="1" SourceUrl="http://localhost:49238/SecurityDoorService.xamlx?wsdl=wsdl0" />
+    <MetadataFile FileName="SecurityDoorService.disco" MetadataType="Disco" ID="de0e51e6-3ddb-4a35-9950-c7d70e195806" SourceId="1" SourceUrl="http://localhost:49238/SecurityDoorService.xamlx?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

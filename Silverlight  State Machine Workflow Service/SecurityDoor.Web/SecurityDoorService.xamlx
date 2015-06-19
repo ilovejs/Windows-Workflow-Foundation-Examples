@@ -1,0 +1,447 @@
+﻿<WorkflowService mc:Ignorable="sap" ConfigurationName="SecurityDoorService" sap:VirtualizedContainerService.HintSize="710,686" Name="p2:SecurityDoorService" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mv="clr-namespace:Microsoft.VisualBasic;assembly=System" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="http://microsoft.com/samples/wf4/" xmlns:p1="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:p2="http://microsoft.com/samples/wf/statemachine" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:s1="clr-namespace:System;assembly=System" xmlns:s2="clr-namespace:System;assembly=System.Xml" xmlns:s3="clr-namespace:System;assembly=System.Core" xmlns:s4="clr-namespace:System;assembly=Room" xmlns:s5="clr-namespace:System;assembly=System.ServiceModel" xmlns:sa="clr-namespace:System.Activities;assembly=System.Activities" xmlns:sad="clr-namespace:System.Activities.Debugger;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Configuration;assembly=System" xmlns:sc1="clr-namespace:SecurityDoor.Contracts;assembly=SecurityDoor.Contracts" xmlns:sc2="clr-namespace:System.Configuration;assembly=System.Configuration" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System" xmlns:scg1="clr-namespace:System.Collections.Generic;assembly=System.ServiceModel" xmlns:scg2="clr-namespace:System.Collections.Generic;assembly=System.Core" xmlns:scg3="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:sl="clr-namespace:System.Linq;assembly=System.Core" xmlns:srs="clr-namespace:System.Runtime.Serialization;assembly=mscorlib" xmlns:srs1="clr-namespace:System.Runtime.Serialization;assembly=System.Runtime.Serialization" xmlns:ssa="clr-namespace:System.ServiceModel.Activities;assembly=System.ServiceModel.Activities" xmlns:ssx="clr-namespace:System.ServiceModel.XamlIntegration;assembly=System.ServiceModel" xmlns:st="clr-namespace:System.Text;assembly=mscorlib" xmlns:sw="clr-namespace:SecurityDoor.Web;assembly=SecurityDoor.Web" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <p1:StateMachine InitialState="{x:Reference __ReferenceID1}" DisplayName="Security Door State Machine" sad:XamlDebuggerXmlReader.FileName="D:\code\sd\C#\SecurityDoor.Web\SecurityDoorService.xamlx" sap:VirtualizedContainerService.HintSize="680,656" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+        <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+        <x:Double x:Key="StateContainerWidth">666</x:Double>
+        <x:Double x:Key="StateContainerHeight">620</x:Double>
+        <av:PointCollection x:Key="ConnectorLocation">306,77.5 306,107.5 330,107.5 330,139.5</av:PointCollection>
+      </scg3:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <p1:State x:Name="__ReferenceID1" DisplayName="Closed / Locked" sap:VirtualizedContainerService.HintSize="162,61">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">249,139.5</av:Point>
+          <av:Size x:Key="ShapeSize">162,61</av:Size>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Double x:Key="StateContainerWidth">148</x:Double>
+          <x:Double x:Key="StateContainerHeight">25</x:Double>
+        </scg3:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <p1:State.Transitions>
+        <p1:Transition DisplayName="Authorized" sap:VirtualizedContainerService.HintSize="430,955">
+          <p1:Transition.Trigger>
+            <p1:Sequence x:Name="__ReferenceID5" DisplayName="Authorize Key" sap:VirtualizedContainerService.HintSize="388,540">
+              <p1:Sequence.Variables>
+                <p1:Variable x:TypeArguments="CorrelationHandle" Name="__handle1" />
+              </p1:Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg3:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Receive x:Name="__ReferenceID0" CanCreateInstance="True" CorrelatesWith="[RoomCorrelation]" DisplayName="Receive Authorize Key" sap:VirtualizedContainerService.HintSize="255,90" OperationName="AuthorizeKey" ServiceContractName="p:ISecurityDoorService">
+                <Receive.CorrelatesOn>
+                  <XPathMessageQuery x:Key="key1">
+                    <XPathMessageQuery.Namespaces>
+                      <ssx:XPathMessageContextMarkup>
+                        <x:String x:Key="xgSc">http://microsoft.com/samples/wf4/</x:String>
+                      </ssx:XPathMessageContextMarkup>
+                    </XPathMessageQuery.Namespaces>sm:body()/xgSc:AuthorizeKey/xgSc:RoomNumber</XPathMessageQuery>
+                </Receive.CorrelatesOn>
+                <Receive.CorrelationInitializers>
+                  <RequestReplyCorrelationInitializer CorrelationHandle="[__handle1]" />
+                </Receive.CorrelationInitializers>
+                <ReceiveParametersContent>
+                  <p1:OutArgument x:TypeArguments="x:Int32" x:Key="RoomNumber">[RoomNumber]</p1:OutArgument>
+                  <p1:OutArgument x:TypeArguments="s:Guid" x:Key="CardKey">[CardKey]</p1:OutArgument>
+                  <p1:OutArgument x:TypeArguments="x:TimeSpan" x:Key="Timeout">[Timeout]</p1:OutArgument>
+                  <p1:OutArgument x:TypeArguments="x:Int32" x:Key="IntrusionThreshold">[IntrusionThreshold]</p1:OutArgument>
+                </ReceiveParametersContent>
+              </Receive>
+              <p1:Assign DisplayName="Assign Authorized" sap:VirtualizedContainerService.HintSize="255,58">
+                <p1:Assign.To>
+                  <p1:OutArgument x:TypeArguments="x:Boolean">[AuthResponse.Authorized]</p1:OutArgument>
+                </p1:Assign.To>
+                <p1:Assign.Value>
+                  <p1:InArgument x:TypeArguments="x:Boolean">[CardKey &lt;&gt; Guid.Empty]</p1:InArgument>
+                </p1:Assign.Value>
+              </p1:Assign>
+              <p1:Assign DisplayName="Assign Alert" sap:VirtualizedContainerService.HintSize="255,58">
+                <p1:Assign.To>
+                  <p1:OutArgument x:TypeArguments="x:Boolean">[AuthResponse.Alert]</p1:OutArgument>
+                </p1:Assign.To>
+                <p1:Assign.Value>
+                  <p1:InArgument x:TypeArguments="x:Boolean">[Alert]</p1:InArgument>
+                </p1:Assign.Value>
+              </p1:Assign>
+              <SendReply Request="{x:Reference __ReferenceID0}" DisplayName="Reply Authorize Key" sap:VirtualizedContainerService.HintSize="255,90">
+                <SendParametersContent>
+                  <p1:InArgument x:TypeArguments="sc1:AuthorizeResponse" x:Key="Authorized">[AuthResponse]</p1:InArgument>
+                </SendParametersContent>
+              </SendReply>
+            </p1:Sequence>
+          </p1:Transition.Trigger>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:PointCollection x:Key="ConnectorLocation">330,200.5 330,230.5 510,230.5 510,329</av:PointCollection>
+            </scg3:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <p1:Transition.To>
+            <p1:State x:Name="__ReferenceID6" DisplayName="Closed / Unlocked" sap:VirtualizedContainerService.HintSize="164,62">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <av:Point x:Key="ShapeLocation">428,329</av:Point>
+                  <av:Size x:Key="ShapeSize">164,62</av:Size>
+                  <x:Double x:Key="StateContainerWidth">149.80412567904583</x:Double>
+                  <x:Double x:Key="StateContainerHeight">26.053372280459627</x:Double>
+                </scg3:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <p1:State.Transitions>
+                <p1:Transition DisplayName="Unlocked Timeout" sap:VirtualizedContainerService.HintSize="430,485">
+                  <p1:Transition.Trigger>
+                    <p1:Delay DisplayName="Unlocked Timeout" Duration="[Timeout]" sap:VirtualizedContainerService.HintSize="388,100" />
+                  </p1:Transition.Trigger>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                      <av:PointCollection x:Key="ConnectorLocation">559.2,329 559.2,160.85 411,160.85</av:PointCollection>
+                    </scg3:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <p1:Transition.To>
+                    <x:Reference>__ReferenceID1</x:Reference>
+                  </p1:Transition.To>
+                </p1:Transition>
+                <p1:Transition DisplayName="Opened" sap:VirtualizedContainerService.HintSize="430,485">
+                  <p1:Transition.Trigger>
+                    <Receive CorrelatesWith="[RoomCorrelation]" DisplayName="Receive Door Opened" sap:VirtualizedContainerService.HintSize="388,100" OperationName="NotifyDoorStatus" ServiceContractName="p:ISecurityDoorService">
+                      <Receive.CorrelatesOn>
+                        <XPathMessageQuery x:Key="key1">
+                          <XPathMessageQuery.Namespaces>
+                            <ssx:XPathMessageContextMarkup>
+                              <x:String x:Key="xgSc">http://microsoft.com/samples/wf4/</x:String>
+                            </ssx:XPathMessageContextMarkup>
+                          </XPathMessageQuery.Namespaces>sm:body()/xgSc:NotifyDoorStatus/xgSc:RoomNumber</XPathMessageQuery>
+                      </Receive.CorrelatesOn>
+                      <ReceiveParametersContent>
+                        <p1:OutArgument x:TypeArguments="x:Int32" x:Key="RoomNumber">[RoomNumber]</p1:OutArgument>
+                        <p1:OutArgument x:TypeArguments="x:Boolean" x:Key="IsOpen">[IsOpen]</p1:OutArgument>
+                        <p1:OutArgument x:TypeArguments="x:Boolean" x:Key="IsLocked">[IsLocked]</p1:OutArgument>
+                      </ReceiveParametersContent>
+                    </Receive>
+                  </p1:Transition.Trigger>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                      <av:PointCollection x:Key="ConnectorLocation">428,372.4 398,372.4 398,453.5 428.5,453.5</av:PointCollection>
+                    </scg3:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <p1:Transition.Condition>[IsOpen = True]</p1:Transition.Condition>
+                  <p1:Transition.To>
+                    <p1:State x:Name="__ReferenceID7" DisplayName="Open" sap:VirtualizedContainerService.HintSize="163,70">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <av:Point x:Key="ShapeLocation">428.5,415</av:Point>
+                          <av:Size x:Key="ShapeSize">163,70</av:Size>
+                          <x:Double x:Key="StateContainerWidth">148.52088734788777</x:Double>
+                          <x:Double x:Key="StateContainerHeight">34.417422722755873</x:Double>
+                        </scg3:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <p1:State.Transitions>
+                        <p1:Transition DisplayName="Closed" sap:VirtualizedContainerService.HintSize="430,485">
+                          <p1:Transition.Trigger>
+                            <Receive CorrelatesWith="[RoomCorrelation]" DisplayName="Receive Door Closed" sap:VirtualizedContainerService.HintSize="388,100" OperationName="NotifyDoorStatus" ServiceContractName="p:ISecurityDoorService">
+                              <Receive.CorrelatesOn>
+                                <XPathMessageQuery x:Key="key1">
+                                  <XPathMessageQuery.Namespaces>
+                                    <ssx:XPathMessageContextMarkup>
+                                      <x:String x:Key="xgSc">http://microsoft.com/samples/wf4/</x:String>
+                                    </ssx:XPathMessageContextMarkup>
+                                  </XPathMessageQuery.Namespaces>sm:body()/xgSc:NotifyDoorStatus/xgSc:RoomNumber</XPathMessageQuery>
+                              </Receive.CorrelatesOn>
+                              <ReceiveParametersContent>
+                                <p1:OutArgument x:TypeArguments="x:Int32" x:Key="RoomNumber">[RoomNumber]</p1:OutArgument>
+                                <p1:OutArgument x:TypeArguments="x:Boolean" x:Key="IsOpen">[IsOpen]</p1:OutArgument>
+                                <p1:OutArgument x:TypeArguments="x:Boolean" x:Key="IsLocked">[IsLocked]</p1:OutArgument>
+                              </ReceiveParametersContent>
+                            </Receive>
+                          </p1:Transition.Trigger>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                              <av:PointCollection x:Key="ConnectorLocation">591.5,432.5 621.5,432.5 621.5,145.6 411,145.6</av:PointCollection>
+                            </scg3:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <p1:Transition.To>
+                            <x:Reference>__ReferenceID1</x:Reference>
+                          </p1:Transition.To>
+                          <p1:Transition.Condition>[IsOpen = False]</p1:Transition.Condition>
+                        </p1:Transition>
+                        <p1:Transition DisplayName="Opened Timeout" sap:VirtualizedContainerService.HintSize="430,485">
+                          <p1:Transition.Trigger>
+                            <p1:Delay DisplayName="Open Timeout" Duration="[Timeout]" sap:VirtualizedContainerService.HintSize="388,100" />
+                          </p1:Transition.Trigger>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                              <av:PointCollection x:Key="ConnectorLocation">526.3,485 526.3,515 274.3,515 274.3,501.5</av:PointCollection>
+                            </scg3:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <p1:Transition.To>
+                            <p1:State x:Name="__ReferenceID3" DisplayName="Alert" sap:VirtualizedContainerService.HintSize="143,63">
+                              <p1:State.Entry>
+                                <p1:Assign sap:VirtualizedContainerService.HintSize="300,150">
+                                  <p1:Assign.To>
+                                    <p1:OutArgument x:TypeArguments="x:Boolean">[Alert]</p1:OutArgument>
+                                  </p1:Assign.To>
+                                  <p1:Assign.Value>
+                                    <p1:InArgument x:TypeArguments="x:Boolean">True</p1:InArgument>
+                                  </p1:Assign.Value>
+                                </p1:Assign>
+                              </p1:State.Entry>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <av:Point x:Key="ShapeLocation">188.5,438.5</av:Point>
+                                  <av:Size x:Key="ShapeSize">143,63</av:Size>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  <x:Double x:Key="StateContainerWidth">129.416247663536</x:Double>
+                                  <x:Double x:Key="StateContainerHeight">26.816723187340358</x:Double>
+                                </scg3:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <p1:State.Exit>
+                                <p1:Assign sap:VirtualizedContainerService.HintSize="300,150">
+                                  <p1:Assign.To>
+                                    <p1:OutArgument x:TypeArguments="x:Boolean">[Alert]</p1:OutArgument>
+                                  </p1:Assign.To>
+                                  <p1:Assign.Value>
+                                    <p1:InArgument x:TypeArguments="x:Boolean">False</p1:InArgument>
+                                  </p1:Assign.Value>
+                                </p1:Assign>
+                              </p1:State.Exit>
+                              <p1:State.Transitions>
+                                <p1:Transition DisplayName="Authorize" sap:VirtualizedContainerService.HintSize="430,925">
+                                  <p1:Transition.Trigger>
+                                    <p1:Sequence DisplayName="Authorize Key" sap:VirtualizedContainerService.HintSize="388,540">
+                                      <p1:Sequence.Variables>
+                                        <p1:Variable x:TypeArguments="CorrelationHandle" Name="__handle1" />
+                                      </p1:Sequence.Variables>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg3:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Receive x:Name="__ReferenceID2" CanCreateInstance="True" CorrelatesWith="[RoomCorrelation]" DisplayName="Receive Authorize Key" sap:VirtualizedContainerService.HintSize="255,90" OperationName="AuthorizeKey" ServiceContractName="p:ISecurityDoorService">
+                                        <Receive.CorrelatesOn>
+                                          <XPathMessageQuery x:Key="key1">
+                                            <XPathMessageQuery.Namespaces>
+                                              <ssx:XPathMessageContextMarkup>
+                                                <x:String x:Key="xgSc">http://microsoft.com/samples/wf4/</x:String>
+                                              </ssx:XPathMessageContextMarkup>
+                                            </XPathMessageQuery.Namespaces>sm:body()/xgSc:AuthorizeKey/xgSc:RoomNumber</XPathMessageQuery>
+                                        </Receive.CorrelatesOn>
+                                        <Receive.CorrelationInitializers>
+                                          <RequestReplyCorrelationInitializer CorrelationHandle="[__handle1]" />
+                                        </Receive.CorrelationInitializers>
+                                        <ReceiveParametersContent>
+                                          <p1:OutArgument x:TypeArguments="x:Int32" x:Key="RoomNumber">[RoomNumber]</p1:OutArgument>
+                                          <p1:OutArgument x:TypeArguments="s:Guid" x:Key="CardKey">[CardKey]</p1:OutArgument>
+                                          <p1:OutArgument x:TypeArguments="x:TimeSpan" x:Key="Timeout">[Timeout]</p1:OutArgument>
+                                          <p1:OutArgument x:TypeArguments="x:Int32" x:Key="IntrusionThreshold">[IntrusionThreshold]</p1:OutArgument>
+                                        </ReceiveParametersContent>
+                                      </Receive>
+                                      <p1:Assign sap:VirtualizedContainerService.HintSize="255,58">
+                                        <p1:Assign.To>
+                                          <p1:OutArgument x:TypeArguments="x:Boolean">[AuthResponse.Authorized]</p1:OutArgument>
+                                        </p1:Assign.To>
+                                        <p1:Assign.Value>
+                                          <p1:InArgument x:TypeArguments="x:Boolean">False</p1:InArgument>
+                                        </p1:Assign.Value>
+                                      </p1:Assign>
+                                      <p1:Assign sap:VirtualizedContainerService.HintSize="255,58">
+                                        <p1:Assign.To>
+                                          <p1:OutArgument x:TypeArguments="x:Boolean">[AuthResponse.Alert]</p1:OutArgument>
+                                        </p1:Assign.To>
+                                        <p1:Assign.Value>
+                                          <p1:InArgument x:TypeArguments="x:Boolean">[Alert]</p1:InArgument>
+                                        </p1:Assign.Value>
+                                      </p1:Assign>
+                                      <SendReply Request="{x:Reference __ReferenceID2}" DisplayName="Reply Authorize Key" sap:VirtualizedContainerService.HintSize="255,90">
+                                        <SendParametersContent>
+                                          <p1:InArgument x:TypeArguments="sc1:AuthorizeResponse" x:Key="Authorized">[AuthResponse]</p1:InArgument>
+                                        </SendParametersContent>
+                                      </SendReply>
+                                    </p1:Sequence>
+                                  </p1:Transition.Trigger>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <av:PointCollection x:Key="ConnectorLocation">274.3,438.5 274.3,408.5 361.5,408.5 361.5,463.7 331.5,463.7</av:PointCollection>
+                                    </scg3:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <p1:Transition.To>
+                                    <x:Reference>__ReferenceID3</x:Reference>
+                                  </p1:Transition.To>
+                                </p1:Transition>
+                                <p1:Transition DisplayName="Reset" sap:VirtualizedContainerService.HintSize="430,925">
+                                  <p1:Transition.Trigger>
+                                    <p1:Sequence DisplayName="Door Reset" sap:VirtualizedContainerService.HintSize="388,540">
+                                      <p1:Sequence.Variables>
+                                        <p1:Variable x:TypeArguments="CorrelationHandle" Name="__handle1" />
+                                      </p1:Sequence.Variables>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg3:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Receive x:Name="__ReferenceID4" CanCreateInstance="True" CorrelatesWith="[RoomCorrelation]" DisplayName="Receive Door Reset" sap:VirtualizedContainerService.HintSize="255,90" OperationName="DoorReset" ServiceContractName="p:ISecurityDoorService">
+                                        <Receive.CorrelatesOn>
+                                          <XPathMessageQuery x:Key="key1">
+                                            <XPathMessageQuery.Namespaces>
+                                              <ssx:XPathMessageContextMarkup>
+                                                <x:String x:Key="xgSc">http://microsoft.com/samples/wf4/</x:String>
+                                              </ssx:XPathMessageContextMarkup>
+                                            </XPathMessageQuery.Namespaces>sm:body()/xgSc:DoorReset/xgSc:RoomNumber</XPathMessageQuery>
+                                        </Receive.CorrelatesOn>
+                                        <Receive.CorrelationInitializers>
+                                          <RequestReplyCorrelationInitializer CorrelationHandle="[__handle1]" />
+                                        </Receive.CorrelationInitializers>
+                                        <ReceiveParametersContent>
+                                          <p1:OutArgument x:TypeArguments="x:Int32" x:Key="RoomNumber">[RoomNumber]</p1:OutArgument>
+                                          <p1:OutArgument x:TypeArguments="s:Guid" x:Key="CardKey">[CardKey]</p1:OutArgument>
+                                          <p1:OutArgument x:TypeArguments="x:TimeSpan" x:Key="Timeout">[Timeout]</p1:OutArgument>
+                                          <p1:OutArgument x:TypeArguments="x:Int32" x:Key="IntrusionThreshold">[IntrusionThreshold]</p1:OutArgument>
+                                        </ReceiveParametersContent>
+                                      </Receive>
+                                      <p1:Assign sap:VirtualizedContainerService.HintSize="255,58">
+                                        <p1:Assign.To>
+                                          <p1:OutArgument x:TypeArguments="x:Boolean">[AuthResponse.Authorized]</p1:OutArgument>
+                                        </p1:Assign.To>
+                                        <p1:Assign.Value>
+                                          <p1:InArgument x:TypeArguments="x:Boolean">[CardKey &lt;&gt; Guid.Empty]</p1:InArgument>
+                                        </p1:Assign.Value>
+                                      </p1:Assign>
+                                      <p1:Assign sap:VirtualizedContainerService.HintSize="255,58">
+                                        <p1:Assign.To>
+                                          <p1:OutArgument x:TypeArguments="x:Boolean">[AuthResponse.Alert]</p1:OutArgument>
+                                        </p1:Assign.To>
+                                        <p1:Assign.Value>
+                                          <p1:InArgument x:TypeArguments="x:Boolean">[Not AuthResponse.Authorized]</p1:InArgument>
+                                        </p1:Assign.Value>
+                                      </p1:Assign>
+                                      <SendReply Request="{x:Reference __ReferenceID4}" DisplayName="Reply Door Reset" sap:VirtualizedContainerService.HintSize="255,90">
+                                        <SendParametersContent>
+                                          <p1:InArgument x:TypeArguments="sc1:AuthorizeResponse" x:Key="Authorized">[AuthResponse]</p1:InArgument>
+                                        </SendParametersContent>
+                                      </SendReply>
+                                    </p1:Sequence>
+                                  </p1:Transition.Trigger>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <av:PointCollection x:Key="ConnectorLocation">188.5,470 22.5,470 22.5,109.5 265.2,109.5 265.2,139.5</av:PointCollection>
+                                    </scg3:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <p1:Transition.To>
+                                    <x:Reference>__ReferenceID1</x:Reference>
+                                  </p1:Transition.To>
+                                  <p1:Transition.Action>
+                                    <p1:Assign sap:VirtualizedContainerService.HintSize="347,150">
+                                      <p1:Assign.To>
+                                        <p1:OutArgument x:TypeArguments="x:Boolean">[Alert]</p1:OutArgument>
+                                      </p1:Assign.To>
+                                      <p1:Assign.Value>
+                                        <p1:InArgument x:TypeArguments="x:Boolean">False</p1:InArgument>
+                                      </p1:Assign.Value>
+                                    </p1:Assign>
+                                  </p1:Transition.Action>
+                                  <p1:Transition.Condition>[AuthResponse.Authorized]</p1:Transition.Condition>
+                                </p1:Transition>
+                              </p1:State.Transitions>
+                            </p1:State>
+                          </p1:Transition.To>
+                        </p1:Transition>
+                      </p1:State.Transitions>
+                    </p1:State>
+                  </p1:Transition.To>
+                </p1:Transition>
+              </p1:State.Transitions>
+            </p1:State>
+          </p1:Transition.To>
+          <p1:Transition.Action>
+            <p1:Assign DisplayName="Assign Unlock Attempts" sap:VirtualizedContainerService.HintSize="347,150">
+              <p1:Assign.To>
+                <p1:OutArgument x:TypeArguments="x:Int32">[UnlockAttempts]</p1:OutArgument>
+              </p1:Assign.To>
+              <p1:Assign.Value>
+                <p1:InArgument x:TypeArguments="x:Int32">1</p1:InArgument>
+              </p1:Assign.Value>
+            </p1:Assign>
+          </p1:Transition.Action>
+          <p1:Transition.Condition>[AuthResponse.Authorized]</p1:Transition.Condition>
+        </p1:Transition>
+        <p1:Transition Trigger="{x:Reference __ReferenceID5}" DisplayName="Unauthorized" sap:VirtualizedContainerService.HintSize="430,955">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:PointCollection x:Key="ConnectorLocation">330,200.5 330,230.5 161.95,230.5 161.95,265</av:PointCollection>
+            </scg3:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <p1:Transition.Condition>[Not AuthResponse.Authorized]</p1:Transition.Condition>
+          <p1:Transition.To>
+            <p1:State x:Name="__ReferenceID8" DisplayName="Intrusion Detect" sap:VirtualizedContainerService.HintSize="161,74">
+              <p1:State.Entry>
+                <p1:Assign sap:VirtualizedContainerService.HintSize="300,150">
+                  <p1:Assign.To>
+                    <p1:OutArgument x:TypeArguments="x:Int32">[UnlockAttempts]</p1:OutArgument>
+                  </p1:Assign.To>
+                  <p1:Assign.Value>
+                    <p1:InArgument x:TypeArguments="x:Int32">[UnlockAttempts + 1]</p1:InArgument>
+                  </p1:Assign.Value>
+                </p1:Assign>
+              </p1:State.Entry>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                  <av:Point x:Key="ShapeLocation">89.5,265</av:Point>
+                  <av:Size x:Key="ShapeSize">161,74</av:Size>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Double x:Key="StateContainerWidth">146.69732362528595</x:Double>
+                  <x:Double x:Key="StateContainerHeight">37.661377202742784</x:Double>
+                </scg3:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <p1:State.Transitions>
+                <p1:Transition DisplayName="Retry" sap:VirtualizedContainerService.HintSize="430,491">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                      <av:PointCollection x:Key="ConnectorLocation">89.5,302 59.5,302 59.5,166.95 249,166.95</av:PointCollection>
+                    </scg3:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <p1:Transition.To>
+                    <x:Reference>__ReferenceID1</x:Reference>
+                  </p1:Transition.To>
+                  <p1:Transition.Condition>[UnlockAttempts &lt;= IntrusionThreshold]</p1:Transition.Condition>
+                </p1:Transition>
+                <p1:Transition DisplayName="Warning" sap:VirtualizedContainerService.HintSize="430,485">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                      <av:PointCollection x:Key="ConnectorLocation">153.9,339 153.9,369 252.85,369 252.85,438.5</av:PointCollection>
+                    </scg3:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <p1:Transition.To>
+                    <x:Reference>__ReferenceID3</x:Reference>
+                  </p1:Transition.To>
+                  <p1:Transition.Condition>[UnlockAttempts &gt; IntrusionThreshold]</p1:Transition.Condition>
+                </p1:Transition>
+              </p1:State.Transitions>
+            </p1:State>
+          </p1:Transition.To>
+        </p1:Transition>
+      </p1:State.Transitions>
+    </p1:State>
+    <x:Reference>__ReferenceID6</x:Reference>
+    <x:Reference>__ReferenceID7</x:Reference>
+    <x:Reference>__ReferenceID3</x:Reference>
+    <x:Reference>__ReferenceID8</x:Reference>
+    <p1:StateMachine.Variables>
+      <p1:Variable x:TypeArguments="x:TimeSpan" Name="Timeout" />
+      <p1:Variable x:TypeArguments="x:Int32" Name="RoomNumber" />
+      <p1:Variable x:TypeArguments="s:Guid" Name="CardKey" />
+      <p1:Variable x:TypeArguments="CorrelationHandle" Name="RoomCorrelation" />
+      <p1:Variable x:TypeArguments="x:Boolean" Name="IsOpen" />
+      <p1:Variable x:TypeArguments="x:Boolean" Name="IsLocked" />
+      <p1:Variable x:TypeArguments="x:String" Name="State" />
+      <p1:Variable x:TypeArguments="x:Int32" Default="1" Name="UnlockAttempts" />
+      <p1:Variable x:TypeArguments="x:Int32" Name="IntrusionThreshold" />
+      <p1:Variable x:TypeArguments="x:Boolean" Name="Alert" />
+      <p1:Variable x:TypeArguments="sc1:AuthorizeResponse" Default="[New AuthorizeResponse()]" Name="AuthResponse" />
+    </p1:StateMachine.Variables>
+  </p1:StateMachine>
+</WorkflowService>

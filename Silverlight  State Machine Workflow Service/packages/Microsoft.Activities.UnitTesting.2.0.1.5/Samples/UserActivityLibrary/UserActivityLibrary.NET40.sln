@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserActivityLibrary", "UserActivityLibrary\UserActivityLibrary.csproj", "{FC2F588C-B748-4150-AA46-BF7285DEAD3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserActivityLibrary.Tests", "UserActivityLibrary.Tests\UserActivityLibrary.Tests.csproj", "{1377B272-2E46-4C98-80C3-65FF9CACC573}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D0E215D7-989D-4D48-AB71-4D6B3700E300}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		ReadMe.htm = ReadMe.htm
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+		UserActivityLibrary.vsmdi = UserActivityLibrary.vsmdi
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = UserActivityLibrary.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC2F588C-B748-4150-AA46-BF7285DEAD3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC2F588C-B748-4150-AA46-BF7285DEAD3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC2F588C-B748-4150-AA46-BF7285DEAD3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC2F588C-B748-4150-AA46-BF7285DEAD3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1377B272-2E46-4C98-80C3-65FF9CACC573}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1377B272-2E46-4C98-80C3-65FF9CACC573}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1377B272-2E46-4C98-80C3-65FF9CACC573}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1377B272-2E46-4C98-80C3-65FF9CACC573}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

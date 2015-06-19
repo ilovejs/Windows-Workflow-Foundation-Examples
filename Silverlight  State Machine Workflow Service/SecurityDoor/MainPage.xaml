@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="SecurityDoor.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="500" d:DesignWidth="900" FontSize="14" d:DataContext="{d:DesignInstance }">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Image Grid.Row="0" Grid.Column="0" Source="/SecurityDoor;component/Images/ClosedDoor.png" Name="doorImage" />
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <Image Source="/SecurityDoor;component/Images/NET-WWF_rgb.png" />
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>Room:</TextBlock>
+                <TextBox Name="textRoom" Text="{Binding RoomNumber}" Width="50"/>
+                <Button Name="buttonEmpty" Click="ButtonEmptyClick">Bad Key</Button>
+                <Button Name="buttonNewKey" Click="ButtonNewKeyClick">New Key</Button>
+                <TextBlock>Timeout:</TextBlock>
+                <TextBox Text="{Binding Timeout}" Width="50"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>Key:</TextBlock>
+                <TextBox Name="textKey" Text="{Binding CardKey}" Width="Auto"/>
+            </StackPanel>
+            <Rectangle Name="LED" Height="50" Fill="Red" />
+            <Button Name="buttonUnlock" Click="ButtonUnlockClick" IsEnabled="{Binding Locked}">Unlock</Button>
+            <Button Name="buttonOpen" Click="ButtonOpenClick" IsEnabled="{Binding CanOpen}">Open</Button>
+            <Button Name="buttonClose" Click="ButtonCloseClick" IsEnabled="{Binding DoorOpened}" >Close</Button>
+            <Button Name="buttonReset" IsEnabled="{Binding Alert}" Click="ButtonResetClick">Reset</Button>
+            <Button Name="buttonClear" Click="ButtonClearClick">Clear</Button>
+            <ScrollViewer MaxHeight="180" MinHeight="180" Height="180">
+                <ListBox ItemsSource="{Binding Messages}"></ListBox>
+            </ScrollViewer>
+            <MediaElement Name="Buzz" Source="Media/Buzz.mp3" AutoPlay="False" />
+            <MediaElement Name="Open" Source="Media/Open.mp3" AutoPlay="False" />
+            <MediaElement Name="Close" Source="Media/Close.mp3" AutoPlay="False" />
+            <MediaElement Name="Unlock" Source="Media/Unlock.mp3" AutoPlay="False" />
+        </StackPanel>
+
+    </Grid>
+</UserControl>

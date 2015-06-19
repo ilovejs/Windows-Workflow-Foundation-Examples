@@ -1,0 +1,40 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+    <meta http-equiv="refresh" content="5; url=http://wf.codeplex.com/wikipage?title=How%20do%20I%20test%20an%20activity%20with%20bookmarks%3f">
+
+		<title>How do I test an activity with bookmarks?</title>
+	    <style type="text/css">
+div.wikidoc h2{font-size:1.6em;}div.wikidoc h1,div.wikidoc h2,div.wikidoc h3,div.wikidoc h4,div.wikidoc h5,div.wikidoc h6{margin-bottom:.13em;}h2{color:Black;}h2{font-size:1.2em;padding-top:.7em;padding-bottom:.7em;}div.wikidoc ul{list-style-image:url(http://i2.codeplex.com/Images/v17950/doublearrow.gif);list-style-type:none;}ul{margin-left:0em;padding-left:2em;list-style-type:square;list-style-image:url('http://i2.codeplex.com/Images/v17950/bullet_square.gif');}div.wikidoc li{margin-bottom:.3em;margin-top:.3em;vertical-align:middle;}li{margin-left:0;margin-bottom:.1em;margin-top:.1em;}a,a:link,a:visited{text-decoration:underline;color:#3E62A6;}html.IE7 div.wikidoc .externalLinkIcon{background-image:url(http://i2.codeplex.com/Images/v17950/icons_weblink_sm.gif);background-repeat:no-repeat;background-position:right 0;display:inline-block;height:1em;margin-left:.13em;width:.81em;padding-top:.5em;padding-left:.5em;}
+            body
+            {
+                font-family: Tahoma;
+            }
+        </style>
+	</head>
+	<body>	
+    <p>Will redirect to <a href="http://wf.codeplex.com/wikipage?title=How%20do%20I%20test%20an%20activity%20with%20bookmarks%3f">How do I test an activity with bookmarks?</a> on wf.CodePlex.com in 5 seconds</p>
+	    <h2>
+            How do I test an activity with bookmarks?</h2>
+        Bookmarks allow an activity to inform the host application and workflow runtime 
+        that it needs more data before it can continue. The host application or some 
+        other workflow extension can resume the bookmark with the required data at some 
+        later point in time.
+        <br />
+        <br />
+        Activities with bookmarks must be tested using WorkflowApplicationTest host 
+        because WorkflowInvokerTest does not allow activities to use bookmarks.<br />
+        Notes:
+        <ul>
+            <li><i>In this test you will be using Workflow Episode support provided by 
+                extensions to WorkflowApplication in the Microsoft.Activities library. These 
+                extensions can be used in any code not just unit test code.</i> </li>
+            <li><i>This test code requires Microsoft.Activities and 
+                Microsoft.Activities.UnitTesting &gt;= v1.8.5 </i></li>
+            <li><a href="http://code.msdn.microsoft.com/MicrosoftActivitiesUnitTest-680bf54b">
+                Download the sample code<span class="externalLinkIcon"></span></a> for this 
+                walkthrough from MSDN Code Gallery</li>
+        </ul>
+	
+	</body>
+</html>
